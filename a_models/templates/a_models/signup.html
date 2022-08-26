@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'a_models/css/a_models.css' %}" />
+    <title>SignUp</title>
+</head>
+
+<body>
+    <a href="{% url 'core_home_page' %}"><button>Home</button></a>
+    <br>
+    <br>
+    <h4>Please fillout for SignUp</h4>
+    <form action='' method='POST' enctype='multipart/form-data' novalidate>
+        {% csrf_token %}
+        {% for fm in form %}
+        {{fm.label_tag}} {{fm}} {{fm.errors|striptags}} <br><br>
+        {% endfor %}
+        <input type='submit' value='SignUp'>
+    </form>
+    <br>
+    {% if messages %}
+    {% for message in messages %}
+    <span {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</span>
+    {% endfor %}
+    {% endif %}
+
+    <h4>Already a user? <a href="{% url 'login' %}">Login Here</a></h4>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'a_models/css/a_models.css' %}" />
+    <title>CreateandRead</title>
+</head>
+
+<body>
+    <a href="{% url 'core_home_page' %}"><button>Home</button></a>
+    <br>
+    <br>
+    <h4>You can create(C) and read(R) of CRUD in this page</h4>
+    <div>
+        <form action='' method='POST' enctype='multipart/form-data' novalidate>
+            {% csrf_token %}
+            {{uni.as_p}}
+            <input type='submit' value='submit'>
+        </form>
+    </div>
+    <div>
+        <h4>The item details are:</h4>
+        <table>
+            <th>Uniware</th>
+            <th>Length</th>
+            <th>Width</th>
+            <th>Height</th>
+            <th>Action</th>
+
+            {% for product in products %}
+            <tr>
+                <td>{{product.uniware}}</td>
+                <td>{{product.length}}</td>
+                <td>{{product.width}}</td>
+                <td>{{product.height}}</td>
+                <td>
+                    <div class="createandreadformdiv">
+                        <div>
+                            <a href="{% url 'updatedata' product.id %}"><button>Edit</button></a>
+                        </div>
+                        <div>
+                            <form action="{% url 'deletedata' product.id %}" method='POST'>
+                                {% csrf_token %}
+                                <input type='submit' value='Delete'>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+</body>
+
+</html>

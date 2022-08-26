@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'a_models/css/a_models.css' %}" />
+    
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'core_home_page' %}"><button>Home</button></a>
+    <h4>a. Uniware Master Data without any filter</h4>
+    <table>
+         <th>Uniware</th>
+         <th>Brand</th>
+         <th>Head Category</th>
+         <th>Sub Category</th>
+         {% for product in products %}
+          <tr>
+           <td>{{product.uniware}}</td>
+           <td>{{product.brand}}</td>
+           <td>{{product.headcat}}</td>
+           <td>{{product.subcat}}</td>
+          </tr>
+         {% endfor %}
+        </table>
+    
+    <h4>b. Inbound data with columns from multiple filter (many to one relationship)</h4>
+    <table>
+         <th>Uniware</th>
+         <th>Brand</th>
+         <th>Head Category</th>
+         <th>Sub Category</th>
+         <th>Inward Quantity</th>
+         <th>Inward Value</th>
+         {% for inbound in inbounds %}
+          <tr>
+           <td>{{inbound.uniware.uniware}}</td>
+           <td>{{inbound.uniware.brand}}</td>
+           <td>{{inbound.uniware.headcat}}</td>
+           <td>{{inbound.uniware.subcat}}</td>
+           <td>{{inbound.quantity}}</td>
+           <td>{{inbound.price}}</td>
+          </tr>
+         {% endfor %}
+        </table>
+
+
+</body>
+</html>

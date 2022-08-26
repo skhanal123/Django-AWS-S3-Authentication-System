@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'a_models/css/a_models.css' %}" />
+    <title>Uniware Form</title>
+</head>
+<body>
+    <a href="{% url 'core_home_page' %}"><button>Home</button></a>
+    <br>
+    <br>
+    <h4>1. The below form is from Form API</h4>
+    <form action ='' method = 'POST' enctype='multipart/form-data' novalidate>
+        {% csrf_token %}
+        {{uni.as_p}}
+    <input type = 'submit' value = 'submit'>
+    </form>
+    <br>
+    <h4>2. The below form contains CSS and styling along with Form API</h4>
+    <form action="" method="POST" novalidate> {% csrf_token %}
+        {{ form.non_field_errors }}
+          {% for field in uni %}
+            <div class = 'formdiv'>
+              <div class = 'form2_label'>{{ field.label}}</div> <div>{{ field }}</div> <span>{{field.errors|striptags}}</span>
+            </div>
+          {% endfor %}
+        <input type="submit" value="Submit">
+      </form>
+      <br>
+    <h4>3. The below form contains custom validators</h4>
+    <form action ='' method = 'POST' enctype='multipart/form-data' novalidate>
+        {% csrf_token %}
+        {{uni.as_p}}
+    <input type = 'submit' value = 'submit'>
+    </form>
+</body>
+</html>

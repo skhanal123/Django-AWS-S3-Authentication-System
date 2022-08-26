@@ -1,0 +1,52 @@
+body{
+    background-color: blanchedalmond;
+}
+
+table, th, tr, td {
+    border: 1px solid black
+   }
+
+th{
+    background-color: rgb(52, 52, 52);
+    color: white;
+}
+
+.errorlist{
+    list-style-type: none;
+    color: red;
+    font-size: 8px;
+    margin-left: 0px;
+}
+
+.required{
+    color:black;
+    font-size: 10px;
+    width: 20px;
+}
+
+.formdiv{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.createandreadformdiv{
+    display: flex;
+}
+
+.form2_label{
+    width: 125px;
+}
+
+#id_uniware {
+    width: 160px;
+    height: 23px;
+}
+
+.success{
+    color: green
+}
+
+.info{
+    color:blue
+}
+

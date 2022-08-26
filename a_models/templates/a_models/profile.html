@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'a_models/css/a_models.css' %}" />
+    <title>Profile</title>
+</head>
+
+<body>
+    <a href="{% url 'core_home_page' %}"><button>Home</button></a>
+    <br>
+    <br>
+    <h4>Welcome {{name}}</h4>
+    {% if messages %}
+    {% for message in messages %}
+    <small {% if message.tags %} class={{message.tags}} {% endif %}>{{message}}</small>
+    {% endfor %}
+    {% endif %}
+    <br>
+    <form action="" method=POST nonvalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+        {% endif %}
+
+        {% for fm in form %}
+        {{fm.label_tag}}{{fm}}{{fm.error|striptags}} <br><br>
+        {% endfor %}
+        <input type="submit" value='Save'>
+    </form>
+    <br>
+    <a href="{% url 'logout' %}"><button>Logout</button></a>
+    <br><br>
+    {% if name == 'skhanal123' %}
+    <a href="{% url 'changepassword' %}">Change Password</a>
+    {% endif %}
+    <a href="{% url 'changepassword1' %}">Change Password1</a>
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheeT" href="{% static 'core/css/core.css' %}" />
+    <title>Home Page</title>
+</head>
+<body>
+    <h4>This is the home page</h4> 
+    <h4>Please click below to go to respective page</h4> 
+    <a href="{% url 'uniware_master' %}"><button>Models Concept</button></a>  
+    <a href="{% url 'modelform_concept' %}"><button>Model Form</button></a>  
+    <a href="{% url 'formapi_concept' %}"><button>Form API</button></a>  
+    <a href="{% url 'createandread' %}"><button>CRUD</button></a>  
+    <a href="{% url 'messageconcept' %}"><button>Messaging Concept</button></a>  
+    <a href="{% url 'userauthentication' %}"><button>User Authentication</button></a>  
+    <a href="{% url 'userauthentication' %}"><button>Decorators</button></a>  
+    <a href="{% url 'modelform_concept' %}"><button>Signals</button></a>  
+</body>
+</html>
